@@ -14,16 +14,14 @@ public class ScoreController : MonoBehaviour
     void Start()
     {
         this.ScoreText = GameObject.Find("ScoreText");
+        //ゲーム画面に得点を表示
+        this.ScoreText.GetComponent<Text>().text = ("得点：") + Score.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ゲーム画面に得点を表示
-        this.ScoreText.GetComponent<Text>().text = ("得点：") + Score.ToString();
 
-        Debug.Log(Score);
-        
     }
 
     void OnCollisionEnter(Collision other)
@@ -32,15 +30,21 @@ public class ScoreController : MonoBehaviour
         if (other.gameObject.tag == "SmallStarTag")
         {
             this.Score += 10;
+            //ゲーム画面に得点を表示
+            this.ScoreText.GetComponent<Text>().text = ("得点：") + Score.ToString();
         }
 
         else if (other.gameObject.tag == "LargeStarTag")
         {
             this.Score += 20;
+            //ゲーム画面に得点を表示
+            this.ScoreText.GetComponent<Text>().text = ("得点：") + Score.ToString();
         }
         else if (other.gameObject.tag == "SmallCloudTag" || tag == "LargeCloudTag")
         {
             this.Score += 30;
+            //ゲーム画面に得点を表示
+            this.ScoreText.GetComponent<Text>().text = ("得点：") + Score.ToString();
         }     
     }
 }
